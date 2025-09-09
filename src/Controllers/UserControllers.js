@@ -91,11 +91,11 @@ const getUsers = CatchAsyncError(async (req, res, next) => {
             user
         })
 
-    } catch (error) {
+    }
+    catch (error) {
         next(new ErrorHandler(error.messag))
     }
 })
 
 
 module.exports = { registerUser, loginUser, getUsers }
-

@@ -28,5 +28,5 @@ app.use("/api/v1/", UserRoutes)
 app.use(ErrorHandlerMiddleWare)
 
 app.listen(process.env.PORT, () => {
-    console.log("Server Started... At The Port :", process.env.PORT)
+    console.log(`Server Running At... : http://localhost:${process.env.PORT}`)
 })
