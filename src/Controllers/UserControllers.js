@@ -75,5 +75,23 @@ const loginUser = CatchAsyncError(async (req, res, next) => {
 })
 
 
+const getUsers = CatchAsyncError(async (req, res, next) => {
+    try {
+        const user = await User.find()
+
+        if (!user) {
+            return res.status(404).json({
+                "message": "Users Found",
+                "totalUser": user.length,
+                user
+            })
+        }
+
+    } catch (error) {
+        next(new ErrorHandler(error.messag))
+    }
+})
+
+
 module.exports = { registerUser, loginUser }
 
