@@ -81,11 +81,15 @@ const getUsers = CatchAsyncError(async (req, res, next) => {
 
         if (!user) {
             return res.status(404).json({
-                "message": "Users Found",
-                "totalUser": user.length,
-                user
+                "message": "User Not Found",
             })
         }
+
+        return res.status(200).json({
+            "message": "Users Found",
+            "totalUser": user.length,
+            user
+        })
 
     } catch (error) {
         next(new ErrorHandler(error.messag))
@@ -93,5 +97,5 @@ const getUsers = CatchAsyncError(async (req, res, next) => {
 })
 
 
-module.exports = { registerUser, loginUser }
+module.exports = { registerUser, loginUser, getUsers }
 
