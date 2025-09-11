@@ -41,4 +41,4 @@ const authenticateRoles = (...roles) => {
 }
 
 
-module.exports = { isAuthenticate }
+module.exports = { isAuthenticate, authenticateRoles }
