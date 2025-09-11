@@ -42,10 +42,5 @@ const authenticateRoles = (...roles) => {
 }
 
 
-roles = ["admin"]
-user = "admin"
-
-console.log(!roles.includes(user))
-
 
 module.exports = { isAuthenticate, authenticateRoles }
