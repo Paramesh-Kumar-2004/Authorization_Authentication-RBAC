@@ -21,7 +21,7 @@ const isAuthenticate = CatchAsyncError(async (req, res, next) => {
             })
         }
 
-        res.user = user;
+        req.user = user;
         next()
 
     }
@@ -37,6 +37,7 @@ const authenticateRoles = (...roles) => {
         if (!roles.includes(req.user.role)) {
             return next(new ErrorHandler(`${req.user.role} Connot Access`))
         }
+        next()
     }
 }
 
