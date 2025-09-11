@@ -31,4 +31,14 @@ const isAuthenticate = CatchAsyncError(async (req, res, next) => {
 })
 
 
+
+const authenticateRoles = (...roles) => {
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            return next(new ErrorHandler(`${req.user.role} Connot Access`))
+        }
+    }
+}
+
+
 module.exports = { isAuthenticate }
