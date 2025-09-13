@@ -97,5 +97,11 @@ const getUsers = CatchAsyncError(async (req, res, next) => {
     }
 })
 
+const createUser = CatchAsyncError(async (req, res, next) => {
+    res.json({
+        "message": "User Create Controller"
+    })
+})
 
-module.exports = { registerUser, loginUser, getUsers }
+
+module.exports = { registerUser, loginUser, getUsers, createUser }
