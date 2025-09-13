@@ -98,9 +98,19 @@ const getUsers = CatchAsyncError(async (req, res, next) => {
 })
 
 const createUser = CatchAsyncError(async (req, res, next) => {
-    res.json({
-        "message": "User Create Controller"
-    })
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+        next(new ErrorHandler("Enter All The Fields", 400))
+    }
+
+    const isExist = await User.findOne({email})
+    if (isExist) {
+        return res.status(404).json({
+            "message": "This Email Already Exist",
+            isExist
+        })
+    }
+
 })
 
 
