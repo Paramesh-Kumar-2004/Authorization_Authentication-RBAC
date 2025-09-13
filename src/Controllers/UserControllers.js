@@ -134,8 +134,19 @@ const createUser = CatchAsyncError(async (req, res, next) => {
 const deleteUser = CatchAsyncError(async (req, res, next) => {
     try {
         const { id } = req.params;
-        res.json({
-            id
+
+        const isExist = await User.findById(id)
+        if (!isExist) {
+            return res.status(404).json({
+                "success": false,
+                "message": `User Not Found For The Given ID : ${id}`
+            })
+        }
+
+        const user = await User.findByIdAndDelete(id)
+        return res.status(200).json({
+            "message": "User Delete Successfully",
+            user
         })
     }
     catch (error) {
