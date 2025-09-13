@@ -139,7 +139,9 @@ const deleteUser = CatchAsyncError(async (req, res, next) => {
         if (!isExist) {
             return res.status(404).json({
                 "success": false,
-                "message": `User Not Found For The Given ID : ${id}`
+                "message": "User Not Found For The Given ID",
+                id,
+                isExist
             })
         }
 
