@@ -131,4 +131,17 @@ const createUser = CatchAsyncError(async (req, res, next) => {
 })
 
 
-module.exports = { registerUser, loginUser, getUsers, createUser }
+const deleteUser = CatchAsyncError(async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        res.json({
+            id
+        })
+    }
+    catch (error) {
+        next(new ErrorHandler(error.message, 505))
+    }
+})
+
+
+module.exports = { registerUser, loginUser, getUsers, createUser, deleteUser }
