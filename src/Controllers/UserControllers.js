@@ -178,8 +178,8 @@ const updateUser = CatchAsyncError(async (req, res, next) => {
             })
         }
 
-        res.json({
-            "Message": "Done",
+        return res.json({
+            "Message": "User Updated Successfully",
             user
         })
 
