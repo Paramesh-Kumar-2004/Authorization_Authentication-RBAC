@@ -12,5 +12,5 @@ router.route("/users").get(isAuthenticate, authenticateRoles("admin"), getUsers)
     .post(isAuthenticate, authenticateRoles("admin"), createUser)
 
 router.route("/delete/:id").delete(isAuthenticate, authenticateRoles("admin"), deleteUser)
-router.route("/update/:id").put(updateUser)
+router.route("/update/:id").put(isAuthenticate, authenticateRoles("admin"), updateUser)
 module.exports = router
