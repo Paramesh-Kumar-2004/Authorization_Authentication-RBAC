@@ -167,4 +167,4 @@ const updateUser = CatchAsyncError(async (req, res, next) => {
     }
 })
 
-module.exports = { registerUser, loginUser, getUsers, createUser, deleteUser }
+module.exports = { registerUser, loginUser, getUsers, createUser, deleteUser, updateUser }
