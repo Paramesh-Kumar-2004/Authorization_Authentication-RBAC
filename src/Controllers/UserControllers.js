@@ -159,8 +159,12 @@ const deleteUser = CatchAsyncError(async (req, res, next) => {
 
 const updateUser = CatchAsyncError(async (req, res, next) => {
     try {
+
+        const { id } = req.params;
+        const user = await User.findById(id)
         res.json({
-            "Message": "Done"
+            "Message": "Done",
+            user
         })
     } catch (error) {
         next(new ErrorHandler(error.message))
