@@ -93,7 +93,7 @@ const getUsers = CatchAsyncError(async (req, res, next) => {
 
     }
     catch (error) {
-        next(new ErrorHandler(error.messag))
+        next(new ErrorHandler(error.message))
     }
 })
 
@@ -156,5 +156,15 @@ const deleteUser = CatchAsyncError(async (req, res, next) => {
     }
 })
 
+
+const updateUser = CatchAsyncError(async (req, res, next) => {
+    try {
+        res.json({
+            "Message": "Done"
+        })
+    } catch (error) {
+        next(new ErrorHandler(error.message))
+    }
+})
 
 module.exports = { registerUser, loginUser, getUsers, createUser, deleteUser }
