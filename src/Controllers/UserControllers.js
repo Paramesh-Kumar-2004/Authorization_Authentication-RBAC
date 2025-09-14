@@ -161,11 +161,17 @@ const updateUser = CatchAsyncError(async (req, res, next) => {
     try {
 
         const { id } = req.params;
-        const user = await User.findById(id)
+        
+        const user = await User.findByIdAndUpdate(
+            id,
+
+        )
+
         res.json({
             "Message": "Done",
             user
         })
+
     } catch (error) {
         next(new ErrorHandler(error.message))
     }
