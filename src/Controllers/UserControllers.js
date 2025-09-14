@@ -97,6 +97,7 @@ const getUsers = CatchAsyncError(async (req, res, next) => {
     }
 })
 
+
 const createUser = CatchAsyncError(async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
@@ -161,11 +162,21 @@ const updateUser = CatchAsyncError(async (req, res, next) => {
     try {
 
         const { id } = req.params;
-        
+        const { role } = req.body;
+
         const user = await User.findByIdAndUpdate(
             id,
-
+            { role },
+            { new: true }
         )
+
+        if (!user) {
+            return res.status(404).json({
+                "success": false,
+                "message": "User Not Found Given ID",
+                id
+            })
+        }
 
         res.json({
             "Message": "Done",
